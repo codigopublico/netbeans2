@@ -119,25 +119,32 @@ int fibo(int a){
 int* orden(int n[], int n2){
 int aux;
 int i = 0;
-while(i < n2){
+while(i < n2 - 1){
     if(i < 0){
         i = 0;
     }
     if(n[i] < n[i+1]){
+	if(i >= n2){
+	aux = n[i];
+        n[i] = n[i - 1];//es por esto que funciona mal el programa por i + 1. 
+        n[i - 1] = aux;
+        std::cout << "\nordenado numeros\n";
+}else{
         aux = n[i];
-        n[i] = n[i + 1];
+        n[i] = n[i + 1];//es por esto que funciona mal el programa por i + 1. 
         n[i + 1] = aux;
         std::cout << "\nordenado numeros\n";
          for(int e = 0; e < n2; e++){
         std::cout << n[e] << "  ";
-    }
-        std::cout << "\n";
+}
+ 	std::cout << "\n" << "El valor de la i es " << i << "\n";
         i--;
+    } 
     }else{
         i++;
     }
 }
-int *r = new int[n2]; 
+int *r = new int[n2];
 for(int i = 0; i < n2 ; i++){
     std::cout << n[i] << "  ";
 }
