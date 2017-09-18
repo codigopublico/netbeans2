@@ -65,7 +65,7 @@ cout << "iguales? "<< iguales << endl;
 }
 void p5(){
 int i = 2;
-int ii = 4;
+int ii = 3;
 int n[i][ii];
 for(int e = 0; e < i; e++){
 for(int ee = 0; ee < ii; ee++){

@@ -1,0 +1,86 @@
+Hola Colegio,
+
+En primer lugar, un fichero de cabecera no es técnicamente una biblioteca, aunque se exceptúa aquellas bibliotecas basadas en plantillas de C++. Sugiero que crees dos ficheros: "funciones.h" y "funciones.cpp". El fichero de cabecera debería contener sólo las declaraciones (esto es, prototipos), mientras que el fichero fuente contendrá las creaciones e implementaciones de tales funciones. Así, puedes usar el fichero de cabecera en otros ficheros fuente, sin duplicar las definiciones de las funciones. Recuerda que C/C++ no permite las redefiniciones.
+
+Para Linux, no debería haber ningún problema, ya que todo lo que tienes está escrito en código fuente y usas el estándar.
+
+
+De todos modos, tienes algunos errores en varias funciones; esto es,
+
+- La fórmula que usas en 'comb()' es incorrecta; escribes,
+
+int comb(int m, int n){
+return factor(m)/factor(n)*(m-n);
+}
+
+La fórmula de combinaciones es:
+
+m!
+-------------
+n! * (m-n)!
+
+Por lo tanto, debería ser,
+
+int comb( int m, int n )
+{
+return factor(m) / (factor(n) * factor(m-n));
+}
+
+Aconsejo definir 'comb()' de otra manera, porque es posible que algunas combinaciones no se pueden calcular, por salirse del intervalo válido de enteros al calcular cada factorial. La fórmula sería:
+
+m * (m-1) * ... * (m-n+1)
+---------------------------------
+n * (n-1) * ... * 2 * 1
+
+Claro está, recomiendo usar 'float' o incluso 'double' para la mayoría de estas funciones, porque puede haber desbordamiento al usar enteros.
+
+
+- Para el mínimo y máximo, usas valores iniciales para 'max' que no son correctos, al menos que el array que aceptas siempre va a contener enteros no negativos.
+
+Aconsejo usar las constantes, 'INT_MIN' e 'INT_MAX', definidas en <climits>. Puedes consultar la referencia en nuestra página yendo a: http://c.conclase.net/librerias/index.php?ansilib=limits#inicio
+
+
+- Usas arrays de cantidad variable (VLA, en inglés). Escribes,
+
+int fibo( int a )
+{
+int n[a];
+...
+}
+
+Esto no es estándar, por ahora; es posible que C++17 incluya esta prestación en el lenguaje, pero no está asegurada. Si quieres memoria dinámica, entonces adjudícala explícitamente.
+
+De todas maneras, el algoritmo que usas realmente no necesita guardar todos los resultados. Sólo necesitas tres variables: la suma, y las dos sumas anteriores. Por ejemplo,
+
+int nAnt2 = 0;
+int nAnt1 = 1;
+...
+int nResultado = 1;
+for( int i=2; i<=a; i++ )
+{
+int nActual = nAnt1 + nAnt2;
+
+nAnt2 = nAnt1;
+nAnt1 = nActual;
+nResultado += nActual;
+}
+
+
+- Como ya escribes en tu comentario, cuidado con crear memoria dinámicamente para que se tenga que liberar fuera de la función.
+
+Aconsejo imponer que la función acepte un tercer parámetro que es el array que contendrá los valores resultantes. Por ejemplo,
+
+int* orden( int resultado[], int n[], int n2 )
+{
+...
+return resultado;
+}
+
+Así puedes "encadenar" las invocaciones de 'orden' con otra función que requiera el array.
+
+
+Espero que esto te aclare las dudas.
+
+Steven
+
+
