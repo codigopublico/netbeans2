@@ -7,7 +7,6 @@
 
 #include <cstdlib>
 #include <iostream>
-#include "agenda.h"
 using namespace std;
 
 /*
@@ -91,12 +90,13 @@ cout << endl;
 }
 
 }
+
 void fin(){
+    std::cout << "hola fin\n";
     agenda alex ;
     char nom[] = "laura";
     alex.getreguistro(34, nom);
     std::cout << alex.setnombre();
-
 }
 int main(int argc, char** argv) {
     //p1();
