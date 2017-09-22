@@ -44,12 +44,33 @@ using namespace std;
     
     }
     void rmn(string nom){
+        int a;
         std::cout << "El nombre a eliminar es ....   " << nom << "\n";
         for(int i = 0; i <= aux; i++){
             if(nom == nombre[i]){
                 nombre[i] = "0";
+                numer[i] = 0;
+                aux--;
             }
         }
+        int i = 0;
+        int cambio = 0;
+        while(a < (max - aux) || a == (max - aux)){
+            if(numer[i] == 0 ){
+                a++;
+            }else{
+                      cambio = numer[i];
+                      numer[i] = numer[i + 1];
+                      numer[i + 1] = cambio;
+                a--;
+            }
+            if(i >= max - 1){
+                i = 0;
+            }
+            i++;
+            std::cout << "NUMER DE RM " << numer[i] << "  \n"; 
+        }
+        
         
         }
  };
