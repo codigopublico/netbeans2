@@ -7,11 +7,77 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <string>
 using namespace std;
 
 /*
  * Hola mundo cybernetico
  */
+ class oagenda{
+    public:
+    int aux;
+    int max;
+    int numer[100];
+    string nombre[100];
+    oagenda();
+    void setreguistro(int numero, string nom){
+    int i = 0;
+    while(i < max){
+        std::cout << "numer  " << numer[i] << "\n";
+        if(numer[i] == 0){
+            break;
+        }
+        i++;
+    }
+    aux = i;
+    std::cout << i << "    \n";
+    nombre[aux] = nom; 
+    numer[aux] = numero;
+    std::cout << nombre[aux] << "   \n";
+    }
+    void mostrar(){
+        for(int i = 0; i <= aux; i++){
+            std::cout << "numero:  " << numer[i] << "\n" << "nombre: "<< nombre[i] << "  \n";
+        
+        }
+        
+    
+    }
+    void rmn(string nom){
+        std::cout << "El nombre a eliminar es ....   " << nom << "\n";
+        for(int i = 0; i <= aux; i++){
+            if(nom == nombre[i]){
+                nombre[i] = "0";
+            }
+        }
+        
+        }
+ };
+ oagenda::oagenda(){
+     aux = 100;
+     max = aux;
+     numer[aux];
+     nombre[aux];
+     for(int i = 0; i < max; i++){
+         numer[i] = 0;
+         nombre[i] = "0";
+         std::cout << "numer    " << numer[i] << " nombre   " << nombre[i] << "  " << i <<  "\n";
+     }
+ 
+ }
+void fin(){
+    std::cout << "Iniciando el fin\n";
+    oagenda alex ;
+    char nom[] = "laura";
+    for(int i = 0; i < 30; i++){
+    alex.setreguistro(34, nom);
+    alex.setreguistro(12390, "desconocido");
+    }
+    alex.mostrar();
+    alex.rmn(nom);
+    alex.mostrar();
+    //std::cout << alex.setnombre();
+}
 void p1(){
     int aux = 5;
     int precios[aux];
@@ -91,13 +157,7 @@ cout << endl;
 
 }
 
-void fin(){
-    std::cout << "hola fin\n";
-    agenda alex ;
-    char nom[] = "laura";
-    alex.getreguistro(34, nom);
-    std::cout << alex.setnombre();
-}
+
 int main(int argc, char** argv) {
     //p1();
     //p2();
