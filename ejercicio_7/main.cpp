@@ -36,7 +36,8 @@ using namespace std;
     std::cout << nombre[aux] << "   \n";
     }
     void mostrar(){
-        for(int i = 0; i <= aux; i++){
+        std::cout << "viendo la agenda: \n";
+        for(int i = 0; i < max; i++){
             std::cout << "numero:  " << numer[i] << "\n" << "nombre: "<< nombre[i] << "  \n";
         
         }
@@ -45,8 +46,10 @@ using namespace std;
     }
     void rmn(string nom){
         int a;
+        string scambio;
         std::cout << "El nombre a eliminar es ....   " << nom << "\n";
-        for(int i = 0; i <= aux; i++){
+        a = aux;
+        for(int i = 0; i <= a; i++){
             if(nom == nombre[i]){
                 nombre[i] = "0";
                 numer[i] = 0;
@@ -55,6 +58,10 @@ using namespace std;
         }
         int i = 0;
         int cambio = 0;
+        std::cout << "\n max - aux  " << max -aux << "\n";
+        int b; 
+        std::cin >> b; 
+        a = 0;
         while(a < (max - aux) || a == (max - aux)){
             if(numer[i] == 0 ){
                 a++;
@@ -62,13 +69,16 @@ using namespace std;
                       cambio = numer[i];
                       numer[i] = numer[i + 1];
                       numer[i + 1] = cambio;
+                      scambio = nombre[i];
+                      nombre[i] = nombre[i + 1];
+                      nombre[i + 1] = scambio;
                 a--;
             }
-            if(i >= max - 1){
+            if(i >= max - 2){
                 i = 0;
             }
             i++;
-            std::cout << "NUMER DE RM " << numer[i] << "  \n"; 
+            std::cout << "NUMER DE RM " << numer[i] << " nombre " <<  nombre[i] <<"\n"; 
         }
         
         

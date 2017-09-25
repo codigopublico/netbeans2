@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
     int rc,n;
 	fd = serialport_init("/dev/ttyACM0", baudrate);
         if( fd==-1 ) error("couldn't open port");
-    	rc = serialport_write(fd, "H");//Le falta lo que pone 9600 descifrar
+    	rc = serialport_write(fd, "L");//Le falta lo que pone 9600 descifrar
     	if(rc==-1) error("error writing");
 exit(EXIT_SUCCESS);
 } // end main

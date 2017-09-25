@@ -50,7 +50,7 @@
 #include <string.h>   // String function definitions
 #include <unistd.h>   // for usleep()
 #include <getopt.h>
-
+#include <unistd.h>
 #include "arduino-serial-lib.h"
 
 
@@ -100,10 +100,16 @@ int main(int argc, char *argv[])
     int timeout = 5000;
     char buf[buf_max];
     int rc,n;
+int i = 0;
+while(i < 500){
 	fd = serialport_init("/dev/ttyACM0", baudrate);
         if( fd==-1 ) error("couldn't open port");
+	usleep(1);
+	i++;
     	rc = serialport_write(fd, "H");//Le falta lo que pone 9600 descifrar
     	if(rc==-1) error("error writing");
+	usleep(9);
+}
 exit(EXIT_SUCCESS);
 } // end main
 
