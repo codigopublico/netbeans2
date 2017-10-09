@@ -149,25 +149,27 @@ void p3(){
     for(int i = 0; i < aux2; i++){
         for(int ii = 0; ii < aux; ii++){
         std::cin >> nom[i][ii];
-	/*if(nom[ii][i] == "\0"){
-		break;*/
+	if(nom[ii][i] == 0x0A){
+		break;
 }
         }
     
     std::cout << "El numbre de la escritura es \n";
     for(int i = 0; i < aux2; i++){
         for(int ii = 0; ii < aux; ii++){
-	/*if(nom[i][ii] == "\0"){
+	if(nom[i][ii] == 0x0A ){
 		break;
-	}*/
+	}
         std::cout << nom[i][ii];
+        std::cout << "\n";
 
         }
         std::cout << "\n";
     }
 
 }
-void p4(){
+}
+/*void p4(){
 //completar aquí
     int aux[3] = {4, 5, 0};
     int precios[aux[0]][aux[1]];
@@ -186,13 +188,13 @@ cout << precios[i][j] << " ";
 cout << endl;
 }
 
-}
+}*/
 
 
 int main(int argc, char** argv) {
-    //p1();
-    //p2();
-    //p3();//falta mirar el array de char.
+    p1();
+    p2();
+    p3();//falta mirar el array de char.
     //p4();
     fin();
     return 0;
