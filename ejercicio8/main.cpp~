@@ -9,8 +9,6 @@
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
-#include <string>
-#include <string.h>
 using namespace std;
 
 /*
@@ -67,43 +65,13 @@ class garaje{
         }else{
             std::cout << "Salio el coche de la possicion " << p[0] << "  " << p[1] << "\n";
         }
-        }
         n[p[0]][p[1]] = r;
+        }
 }
 };
-class vehiculo{
-public:
-    string color;
-    int caballos;
-    string marca;
-    string modelo;
-    vehiculo(){};
-    vehiculo(string incolor, int incaballos, string inmarca, string inmodelo){
-        color = incolor;
-        caballos = incaballos;
-        marca = inmarca;
-        modelo = inmodelo;
-    };
-    //~vehiculo(){};
-};
-void p1(){
-    string incolor;
-    int incaballos;
-    string inmarca;
-    string inmodelo;
-    incolor = "Rojo";
-    incaballos = 200;
-    inmarca = "Fiat";
-    inmodelo = "alo";
-    vehiculo camion(incolor, 200, inmarca, inmodelo);
-    //camion.~vehiculo();
-    //vehiculo camion;
-    
-
-}
 
 void juego(){
-    int p[2] = {10, 10};
+    int p[2] = {20, 20};
     garaje aleatrio(p[0], p[1]);
     for(int i = 0; i < 1000000000; i++){
         int e[2] = {rand() % p[0], rand() % p[1]};
@@ -113,12 +81,11 @@ void juego(){
         }
         aleatrio.cambio(e, r);
         aleatrio.grafica();
-        usleep(10);
+        usleep(1000000);
 }
 }
 int main(int argc, char** argv) {
-    p1();
-    //juego();
+    juego();
     //cin.get();
     return 0;
 }
