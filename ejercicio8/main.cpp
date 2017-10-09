@@ -84,6 +84,18 @@ public:
         marca = inmarca;
         modelo = inmodelo;
     };
+    void setcolor(string incolor){
+        color = incolor;
+    }
+    void setcaballos(string incaballos){
+        caballos = incaballos;
+    }
+    void setmarca(string inmarca){
+        marca = inmarca;
+    }
+    void setmodelo(string inmodelo){
+        modelo = inmodelo;
+    }
     //~vehiculo(){};
 };
 void p1(){
