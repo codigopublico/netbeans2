@@ -87,7 +87,7 @@ public:
     void setcolor(string incolor){
         color = incolor;
     }
-    void setcaballos(string incaballos){
+    void setcaballos(int incaballos){
         caballos = incaballos;
     }
     void setmarca(string inmarca){
@@ -95,6 +95,18 @@ public:
     }
     void setmodelo(string inmodelo){
         modelo = inmodelo;
+    }
+    string getcolor(){
+        return color;
+    }
+    int getcaballos(){
+        return caballos;
+    }
+    string getmarca(){
+        return marca;
+    }
+    string getmodelo(){
+        return modelo;
     }
     //~vehiculo(){};
 };
@@ -108,6 +120,7 @@ void p1(){
     inmarca = "Fiat";
     inmodelo = "alo";
     vehiculo camion(incolor, 200, inmarca, inmodelo);
+    std::cout << "Este es el color:  " << camion.getcolor() << "\n";
     //camion.~vehiculo();
     //vehiculo camion;
     
@@ -130,8 +143,11 @@ void juego(){
 }
 int main(int argc, char** argv) {
     p1();
-    //juego();
-    //cin.get();
+    cin.get();
+    std::cout << "El siguiente ejercicio es : juego    \n";
+    cin.get();
+    juego();
+    cin.get();
     return 0;
 }
 
